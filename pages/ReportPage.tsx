@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 import { AppContext } from '../App';
 import type { ReportData, QuizData } from '../types';
 import { generateAssessmentReport } from '../services/geminiService';
-import { Download, Share2, Loader, AlertTriangle, ArrowLeft, Droplets, Bed, BrainCircuit, Utensils, Flame, Target, PieChart, CheckCircle } from 'lucide-react';
+import { Download, Share2, Loader, AlertTriangle, ArrowLeft, Droplets, Bed, BrainCircuit, Utensils, Flame, Target, PieChart, CheckCircle, Scale } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
@@ -54,7 +54,7 @@ const ReportContent = React.forwardRef<HTMLDivElement, { reportData: ReportData,
                 <h2 className="text-2xl font-semibold mb-4 text-gray-800 flex items-center gap-2"><Target className="text-orange-500"/> Your Key Metrics</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <MetricCard icon={Flame} label="Daily Calories" value={String(Math.round(reportData.nutrition.daily_calories))} unit="kcal" />
-                    <MetricCard icon={PieChart} label="BMI" value={reportData.metrics.bmi.toFixed(1)} unit={`(${reportData.metrics.bmi_category})`} />
+                    <MetricCard icon={Scale} label="BMI" value={reportData.metrics.bmi.toFixed(1)} unit={`(${reportData.metrics.bmi_category})`} />
                     <MetricCard icon={Utensils} label="BMR (Resting)" value={String(Math.round(reportData.metrics.bmr))} unit="kcal/day" />
                     <MetricCard icon={CheckCircle} label="TDEE (Active)" value={String(Math.round(reportData.metrics.tdee))} unit="kcal/day" />
                 </div>

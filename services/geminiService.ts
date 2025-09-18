@@ -1,7 +1,8 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import type { QuizData } from '../types';
 
-// API key is sourced from environment variables as per security best practices.
+// Fix: Per coding guidelines, API key must be obtained from process.env.API_KEY.
+// This also resolves the TypeScript error regarding 'import.meta.env'.
 const apiKey = process.env.API_KEY;
 
 if (!apiKey) {
