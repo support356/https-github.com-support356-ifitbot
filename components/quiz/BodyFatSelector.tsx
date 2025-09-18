@@ -46,9 +46,9 @@ const labelFor = (v: number) => {
 export default function BodyFatSelector({ value, onChange }: BodyFatSelectorProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isLoading, setIsLoading] = useState(true);
-    // Fix: Initialize useState with a default value to resolve "Expected 1 arguments, but got 0" error.
+    // FIX: Initialize `useState` with a default empty string value to resolve "Expected 1 arguments, but got 0" error.
     const [bubbleLabel, setBubbleLabel] = useState('');
-    // Fix: Initialize useState with a default value to resolve "Expected 1 arguments, but got 0" error.
+    // FIX: Initialize `useState` with a default string value to resolve "Expected 1 arguments, but got 0" error.
     const [bubbleLeft, setBubbleLeft] = useState('50%');
     
     // Using refs to hold onto canvas-related state that doesn't trigger re-renders

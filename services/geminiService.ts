@@ -1,13 +1,12 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import type { QuizData } from '../types';
 
-// Fix: The application was crashing because process.env.API_KEY is not available in this browser environment.
-// Using the provided API key directly to restore functionality.
-const apiKey = "AIzaSyCInFnCAubyxd9EHmV2XF7JSCkM51eh6dg";
+// API key is sourced from environment variables as per security best practices.
+const apiKey = process.env.API_KEY;
 
 if (!apiKey) {
-  // This check is unlikely to fail now but is kept as a safeguard.
-  console.error("API_KEY environment variable is not set. Please check your .env file or deployment environment variables.");
+  // This check is crucial for debugging and fails safely if the key isn't configured.
+  console.error("API_KEY environment variable is not set. Please check your deployment environment variables.");
   throw new Error("API_KEY environment variable is not set");
 }
 
