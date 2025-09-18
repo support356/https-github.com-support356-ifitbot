@@ -1,0 +1,5 @@
+{
+  "name": "iFitBot",
+  "description": "An AI-powered personal fitness assistant that provides personalized body assessments and workout guides based on your unique goals and metrics.",
+  "requestFramePermissions": []
+}
