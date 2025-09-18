@@ -1,12 +1,18 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import type { QuizData } from '../types';
 
-if (!process.env.API_KEY) {
+// Fix: Per coding guidelines, API key must be retrieved from process.env.API_KEY.
+// This also resolves the TypeScript error "Property 'env' does not exist on type 'ImportMeta'".
+const apiKey = process.env.API_KEY;
+
+if (!apiKey) {
+  // Use a console.error for client-side visibility and throw an error
+  // This will help in debugging if the variable isn't loaded correctly.
+  console.error("API_KEY environment variable is not set. Please check your .env file or deployment environment variables.");
   throw new Error("API_KEY environment variable is not set");
 }
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey });
 
 export const generateAssessmentReport = async (quizData: QuizData) => {
     const prompt = `

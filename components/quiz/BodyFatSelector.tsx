@@ -46,10 +46,10 @@ const labelFor = (v: number) => {
 export default function BodyFatSelector({ value, onChange }: BodyFatSelectorProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [isLoading, setIsLoading] = useState(true);
-    // Fix: Used lazy initialization for useState to work around a potential compiler issue causing a false positive error on this line.
-    const [bubbleLabel, setBubbleLabel] = useState(() => '');
-    // Fix: Used lazy initialization for useState to work around a potential compiler issue causing a false positive error on this line.
-    const [bubbleLeft, setBubbleLeft] = useState(() => '50%');
+    // Fix: Initialize useState with a default value to resolve "Expected 1 arguments, but got 0" error.
+    const [bubbleLabel, setBubbleLabel] = useState('');
+    // Fix: Initialize useState with a default value to resolve "Expected 1 arguments, but got 0" error.
+    const [bubbleLeft, setBubbleLeft] = useState('50%');
     
     // Using refs to hold onto canvas-related state that doesn't trigger re-renders
     const imageRef = useRef<HTMLImageElement>();
